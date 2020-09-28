@@ -1,0 +1,19 @@
+{
+  "name": "webrtc-node-tutorial",
+  "version": "1.0.0",
+  "description": "WebRTC video calling tutorial using Express and Socket.IO",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server",
+    "start": "node server"
+  },
+  "author": "Brian Cross",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
