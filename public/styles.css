@@ -6,6 +6,11 @@
   margin: 0;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: "Nunito", sans-serif;
   display: flex;
@@ -13,7 +18,7 @@ body {
 }
 
 header {
-  margin-top: 1rem;
+  margin: 2em 0;
 }
 
 h1 {
@@ -21,18 +26,13 @@ h1 {
 }
 
 .page-container {
-  display: flex;
-  flex-direction: column;
   width: 85%;
-  max-width: 40rem;
-}
-
-main {
-  display: flex;
-  flex-direction: column;
+  max-width: 90rem;
 }
 
 video {
-  margin: 1rem 0;
   background: #555;
+  --width: 45%;
+  width: var(--width);
+  height: calc(var(--width) * 1080 / 1920);
 }
