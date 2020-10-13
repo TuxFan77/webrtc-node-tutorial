@@ -4,15 +4,19 @@ const localVideo = document.querySelector(".local-video");
 
 endButton.disabled = true;
 
-startButton.addEventListener("click", () => {
+const socket = io();
+socket.on("gotmedia", msg => console.log("Other peer got media: ", msg));
+socket.on("end", msg => console.log("Other peer ended call: ", msg));
+
+startButton.addEventListener("click", async () => {
   startButton.disabled = true;
   endButton.disabled = false;
-  navigator.mediaDevices
-    .getUserMedia({ video: true, audio: false })
-    .then(stream => {
-      console.log(stream);
-      localVideo.srcObject = stream;
-    });
+  const stream = await navigator.mediaDevices.getUserMedia({
+    video: true,
+    audio: false,
+  });
+  localVideo.srcObject = stream;
+  socket.emit("gotmedia", "Got webcam feed");
 });
 
 endButton.addEventListener("click", () => {
@@ -21,4 +25,5 @@ endButton.addEventListener("click", () => {
   localVideo.srcObject = null;
   startButton.disabled = false;
   endButton.disabled = true;
+  socket.emit("end", "End call");
 });
